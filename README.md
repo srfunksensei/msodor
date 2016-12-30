@@ -14,6 +14,7 @@ Idea behind the application lays in faster extraction of information from MS Off
 ## How to run application
 
 To be able to see the application in action you must follow these steps:
+
 1. run `mvn clean install package`
 2. run `java -jar msodor-<version> <file-name>`
 
