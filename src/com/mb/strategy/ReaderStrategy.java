@@ -16,5 +16,5 @@ public interface ReaderStrategy {
 	 * 
 	 * @param fileName name of the file which will be processed
 	 */
-	public List<String> readFile(final String fileName);
+	List<String> readFile(final String fileName);
 }
