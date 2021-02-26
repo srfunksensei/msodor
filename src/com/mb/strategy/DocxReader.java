@@ -30,7 +30,7 @@ public class DocxReader implements ReaderStrategy {
 	public List<String> readFile(final String fileName) {
 		final Path path = FileSystems.getDefault().getPath(fileName);
 
-		List<String> movieNames = new ArrayList<>();
+		final List<String> movieNames = new ArrayList<>();
 		try (final XWPFDocument document = new XWPFDocument(Files.newInputStream(path))) {
 			int year = -1;
 			for (final XWPFParagraph para : document.getParagraphs()) {
@@ -39,14 +39,12 @@ public class DocxReader implements ReaderStrategy {
 						year = Extractor.extractMovieYear(para.getText());
 					} catch (Exception ex) {
 						Optional<String> movie = Extractor.extractMovieNameWithYear(para.getText(), year);
-						if(movie.isPresent()){
-							movieNames.add(movie.get());
-						}
+						movie.ifPresent(movieNames::add);
 					}
 				}
 			}
-		} catch (Exception exep) {
-			exep.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
 		}
 
 		return movieNames;
