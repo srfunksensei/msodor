@@ -7,7 +7,7 @@
 	<name>MSOfficeDocumentReader</name>
 	<description>Simple application used for reading MS documents.</description>
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
