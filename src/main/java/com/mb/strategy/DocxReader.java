@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.poi.util.StringUtil;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
@@ -28,9 +29,16 @@ public class DocxReader implements ReaderStrategy {
 	 */
 	@Override
 	public List<String> readFile(final String fileName) {
-		final Path path = FileSystems.getDefault().getPath(fileName);
-
 		final List<String> movieNames = new ArrayList<>();
+		if (fileName == null || fileName.trim().isEmpty()) {
+			return movieNames;
+		}
+
+		if (!fileName.endsWith("docx")) {
+			return movieNames;
+		}
+
+		final Path path = FileSystems.getDefault().getPath(fileName);
 		try (final XWPFDocument document = new XWPFDocument(Files.newInputStream(path))) {
 			int year = -1;
 			for (final XWPFParagraph para : document.getParagraphs()) {
