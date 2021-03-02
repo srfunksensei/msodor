@@ -20,6 +20,8 @@ import java.util.Optional;
  */
 public class DocReader implements ReaderStrategy {
 
+	public static final String DOC_FILE_TYPE_EXTENSION = ".doc";
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -32,7 +34,7 @@ public class DocReader implements ReaderStrategy {
 			return movieNames;
 		}
 
-		if (!fileName.endsWith("doc")) {
+		if (!fileName.endsWith(getFileType())) {
 			return movieNames;
 		}
 
@@ -55,6 +57,11 @@ public class DocReader implements ReaderStrategy {
 		}
 
 		return movieNames;
+	}
+
+	@Override
+	public String getFileType() {
+		return DOC_FILE_TYPE_EXTENSION;
 	}
 
 }

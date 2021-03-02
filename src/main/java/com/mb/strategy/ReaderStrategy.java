@@ -17,4 +17,11 @@ public interface ReaderStrategy {
 	 * @param fileName name of the file which will be processed
 	 */
 	List<String> readFile(final String fileName);
+
+	/**
+	 * Returns file type which will be used for reading
+	 *
+	 * @return
+	 */
+	String getFileType();
 }

@@ -1,17 +1,15 @@
 package com.mb.strategy;
 
+import com.mb.extractor.Extractor;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import org.apache.poi.util.StringUtil;
-import org.apache.poi.xwpf.usermodel.XWPFDocument;
-import org.apache.poi.xwpf.usermodel.XWPFParagraph;
-
-import com.mb.extractor.Extractor;
 
 /**
  * 
@@ -21,6 +19,8 @@ import com.mb.extractor.Extractor;
  *
  */
 public class DocxReader implements ReaderStrategy {
+
+	public static final String DOCX_FILE_TYPE_EXTENSION = ".docx";
 
 	/*
 	 * (non-Javadoc)
@@ -34,7 +34,7 @@ public class DocxReader implements ReaderStrategy {
 			return movieNames;
 		}
 
-		if (!fileName.endsWith("docx")) {
+		if (!fileName.endsWith(getFileType())) {
 			return movieNames;
 		}
 
@@ -56,5 +56,10 @@ public class DocxReader implements ReaderStrategy {
 		}
 
 		return movieNames;
+	}
+
+	@Override
+	public String getFileType() {
+		return DOCX_FILE_TYPE_EXTENSION;
 	}
 }
