@@ -4,8 +4,8 @@ import java.util.Optional;
 
 /**
  * 
- * Utilitiy class which provides method for extracting specific
- * movie informations
+ * Utility class which provides method for extracting specific
+ * movie information
  * 
  * @author Milan Brankovic
  *
@@ -18,9 +18,9 @@ public class Extractor {
 	 * Returns movie year
 	 * 
 	 * @param paragraph String from which movie year will be extracted
-	 * @return
+	 * @return returns year extracted from paragraph
 	 */
-	public static int extractMovieYear(final String paragraph){
+	public static int extractMovieYear(final String paragraph) {
 		return Integer.parseInt(paragraph.substring(0, YEAR_LENGTH));
 	}
 	
@@ -32,14 +32,10 @@ public class Extractor {
 	 * @return movie name and year if name can be extracted, otherwise empty optional 
 	 */
 	public static Optional<String> extractMovieNameWithYear(final String paragraph, final int year){
-		int slashIndex = paragraph.indexOf('/');
+		final int slashIndex = paragraph.indexOf('/');
 		if (slashIndex != -1) {
-			String name = paragraph.substring(0, slashIndex).trim();
-
-			StringBuilder sb = new StringBuilder();
-			sb.append(name).append(" (").append(year).append(")");
-			
-			return Optional.of(sb.toString());
+			final String name = paragraph.substring(0, slashIndex).trim();
+			return Optional.of(name + " (" + year + ")");
 		}
 		
 		return Optional.empty();
