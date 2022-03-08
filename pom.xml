@@ -36,7 +36,7 @@
 	</build>
 
 	<properties>
-		<poi.version>5.0.0</poi.version>
+		<poi.version>5.2.1</poi.version>
 		<poi.poi-ooxml-schemas.version>4.1.2</poi.poi-ooxml-schemas.version>
 		<poi.ooxml-schemas.version>1.4</poi.ooxml-schemas.version>
 		<junit.version>4.13.2</junit.version>
